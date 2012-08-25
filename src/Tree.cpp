@@ -10,7 +10,7 @@
 namespace Rlibstree {
 
 Tree::Tree(void *data, u_int item_size, u_int num_items)
-: src(lst_string_new(data, item_size, num_items)), set(lst_stringset_new()), tree(NULL)
+: is_character(item_size == 1), src(lst_string_new(data, item_size, num_items)), set(lst_stringset_new()), tree(NULL)
 {
 	lst_stringset_add(set, src);
 	tree = lst_stree_new(set);
@@ -19,5 +19,7 @@ Tree::Tree(void *data, u_int item_size, u_int num_items)
 Tree::~Tree() {
 	lst_stree_free(tree);
 }
+
+
 
 } /* namespace Rlibstree */
