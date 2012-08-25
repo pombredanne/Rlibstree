@@ -9,7 +9,7 @@
 
 using namespace Rcpp;
 
-SEXP Rlibstree__new__string(SEXP Rsrc) {
+SEXP Rlibstree__new__character(SEXP Rsrc) {
 
 	BEGIN_RCPP
 	XPtr<Rlibstree::Tree> tree(new Rlibstree::Tree((void*) CHAR(STRING_ELT(Rsrc,0)), 1, Rf_length(STRING_ELT(Rsrc, 0))));
@@ -18,7 +18,7 @@ SEXP Rlibstree__new__string(SEXP Rsrc) {
 
 }
 
-SEXP Rlibstree__new__int(SEXP Rsrc) {
+SEXP Rlibstree__new__integer(SEXP Rsrc) {
 
 	BEGIN_RCPP
 	XPtr<Rlibstree::Tree> tree(new Rlibstree::Tree( (void*) INTEGER(Rsrc), sizeof(int), Rf_length(Rsrc) ));
@@ -26,6 +26,15 @@ SEXP Rlibstree__new__int(SEXP Rsrc) {
 	END_RCPP
 }
 
+SEXP Rlibstree__print(SEXP Rtree) {
 
+	BEGIN_RCPP
+
+	XPtr<Rlibstree::Tree> tree(Rtree);
+	tree->print();
+
+	END_RCPP
+
+}
 
 
