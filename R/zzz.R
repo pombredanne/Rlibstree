@@ -1,0 +1,1 @@
+library.dynam("Rlibstree", package="Rlibstree", lib.loc=NULL)
