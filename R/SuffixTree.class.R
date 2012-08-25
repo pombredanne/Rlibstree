@@ -13,4 +13,11 @@ setMethod("initialize", "SuffixTree", function(.Object, src) {
 setMethod( "$", "SuffixTree", function(x, name) {
 	function(...) .Call(paste("Rlibstree", name, sep="__"), x@tree, ...)			
 })
-				
+
+setMethod("print",
+		signature(x = "SuffixTree"),
+		function (x, ...) 
+		{
+			.Call("Rlibstree__print", x@tree)
+		}
+)
