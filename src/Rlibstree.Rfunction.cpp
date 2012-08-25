@@ -19,7 +19,11 @@ SEXP Rlibstree__new__string(SEXP Rsrc) {
 }
 
 SEXP Rlibstree__new__int(SEXP Rsrc) {
-	return R_NilValue;
+
+	BEGIN_RCPP
+	XPtr<Rlibstree::Tree> tree(new Rlibstree::Tree( (void*) INTEGER(Rsrc), sizeof(int), Rf_length(Rsrc) ));
+	return tree;
+	END_RCPP
 }
 
 
