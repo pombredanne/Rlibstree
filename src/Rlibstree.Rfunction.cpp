@@ -12,9 +12,8 @@ using namespace Rcpp;
 SEXP Rlibstree__new(SEXP Rsrc) {
 
 	BEGIN_RCPP
-	Rlibstree::Tree* tree = new Rlibstree::Tree((void*) CHAR(STRING_ELT(Rsrc,0)), 1, Rf_length(STRING_ELT(Rsrc, 0)));
-	delete tree;
-	return R_NilValue;
+	XPtr<Rlibstree::Tree> tree(new Rlibstree::Tree((void*) CHAR(STRING_ELT(Rsrc,0)), 1, Rf_length(STRING_ELT(Rsrc, 0))));
+	return tree;
 	END_RCPP
 
 }
