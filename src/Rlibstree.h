@@ -16,7 +16,7 @@
 
 #include "Tree.h"
 
-RcppExport SEXP Rlibstree__new(SEXP Rsrc);
+RcppExport SEXP Rlibstree__new__string(SEXP Rsrc);
 RcppExport SEXP Rlibstree__new__int(SEXP Rsrc);
 
 #endif /* RLIBSTREE_H_ */
