@@ -9,6 +9,7 @@
 #include <R.h>
 #include <string>
 #include <sstream>
+#include <memory>
 
 namespace Rlibstree {
 
@@ -97,12 +98,20 @@ static int print_node_integer(LST_Node* node, void* data) {
 }
 
 void Tree::print() {
-
 	if (is_character)
 		lst_alg_dfs(tree, &print_node_character, tree);
-	else
+	else {
 		lst_alg_dfs(tree, &print_node_integer, tree);
-
+		for(std::vector<LST_Node*>::iterator i = leaf_index.begin();i != leaf_index.end();i++) {
+			Rprintf("---\n");
+			std::auto_ptr<LST_String> str_ptr(lst_node_get_string((*i), size));
+			int* start = reinterpret_cast<int*>(lst_string_get_item(str_ptr.get(), 0));
+			for(int j = 0;j < lst_string_get_length(str_ptr.get());j++) {
+				Rprintf("%d", start[j]);
+			}
+			Rprintf("\n");
+		}
+	}
 }
 
 }
